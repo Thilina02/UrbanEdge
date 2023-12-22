@@ -8,6 +8,7 @@ import SignUp from './pages/Signup';
 import Home from './pages/Home';
 import SignInSide from './pages/Signin';
 import { ListwithUs } from './pages/List-with-Us';
+import { Listwitusform } from './pages/List-wit-us-form';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/SignUp' element={<SignUp/>}/>
           <Route path='/SignIn' element={<SignInSide/>}/>
           <Route path='/List-with-us' element={<ListwithUs/>}/>
+          <Route path='/List-with-us-form' element={<Listwitusform/>}/>
         </Routes>
       </Router>
 
