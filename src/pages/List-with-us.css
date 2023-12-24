@@ -142,6 +142,7 @@
   .TProperty:hover .TProperty__content {
     transform: rotateX(0deg);
     background-color: rgba(242, 242, 242, 0.8); /* Adjust alpha value on hover if needed */
+   
   }
   
   .TProperty__title {

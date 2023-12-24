@@ -28,13 +28,13 @@ export const ListwithUs= () => {
               selling or renting experience through tailored
               strategies and a dedicated team focused on maximizing value.</Typography>
             <Button variant='contained' style={{marginTop:'3vh',marginBottom:'10vh'}}  
-              component={RouterLink} to="/List-with-us-form">List here</Button>
+              component={RouterLink} to="/List-with-us-add">List here</Button>
           </div>
 
         </Grid>
           <div style={{borderTop:'2px solid #000', width:'100%', marginTop:'20px'}}></div>
       </Grid>
-      <Typography variant='h4'  style={{ display:'grid',placeItems:'center',fontWeight:'800'}}>Types Of Property</Typography>
+      <Typography variant='h4'  style={{ display:'grid',placeItems:'center',fontWeight:'800'}}>Types Of Property For Buy</Typography>
 
 
       <Grid container xs={12} sx={{width:'175vh',margin:'auto',marginTop:'6vh',fontSize: '20px'}}>
