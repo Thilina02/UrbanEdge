@@ -2,14 +2,12 @@ import React from 'react';
 import { styled } from '@mui/system';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const StyledFooter = styled('footer')(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: '#50595B',
   padding: theme.spacing(4),
   color: theme.palette.common.white,
 }));
@@ -19,16 +17,6 @@ const StyledContactInfo = styled('div')(({ theme }) => ({
   alignItems: 'center',
   marginBottom: theme.spacing(2),
 }));
-
-const StyledSearch = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  marginBottom: theme.spacing(2),
-}));
-
-const StyledSearchInput = { flex: 1 };
-
-const StyledSearchButton = { marginLeft: 2 };
 
 const Footer = () => {
   return (
@@ -55,33 +43,28 @@ const Footer = () => {
 
         {/* Property Search */}
         <Grid item xs={12} sm={6} md={4}>
-          <Typography variant="h6" gutterBottom>
-            Property Search
+          <Typography variant='h6'>UrbanEdge</Typography>
+          <Typography variant="subtitle1" gutterBottom>
+            UrbanEdge, your gateway to exceptional properties. 
+            Elevate your lifestyle with our curated selection of homes, 
+            where luxury meets innovation in every corner.
           </Typography>
-          <StyledSearch>
-            <TextField
-              variant="outlined"
-              placeholder="Search for properties"
-              sx={StyledSearchInput}
-            />
-            <Button
-              variant="contained"
-              color="secondary"
-              sx={StyledSearchButton}
-            >
-              Search
-            </Button>
-          </StyledSearch>
+          {/* Add SocialIcons component here */}
+          
         </Grid>
 
         {/* Additional Links */}
         <Grid item xs={12} md={4}>
-          <Typography variant="h6" gutterBottom>
-            Quick Links
-          </Typography>
           {/* Add your additional links here */}
         </Grid>
       </Grid>
+      <div className="text-center p-3" 
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.2)", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        © {new Date().getFullYear()} Copyright:
+        <a className="text-dark" href="" style={{ color: 'black' }}>
+          UrbanEdge.com
+        </a>
+      </div>
     </StyledFooter>
   );
 };

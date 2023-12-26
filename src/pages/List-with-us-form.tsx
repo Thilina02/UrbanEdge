@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import { Grid, Typography } from '@mui/material'
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
-import InputAdornment from '@mui/material/InputAdornment';
 import { SelectChangeEvent } from '@mui/material/Select';
-import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Navbar from '../components/Navbar';
-
+import { Link as RouterLink } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 
 interface FormData {
@@ -294,14 +286,15 @@ const MyForm: React.FC = () => {
           </Grid>
 
           <Grid item xs={12}>
-            <Button type="submit" variant="contained" color="primary" endIcon={<SendIcon />}>
-              Submit
-            </Button>
+           
+            <Button type="submit" variant='contained' color="primary"   
+              component={RouterLink} to="/Listing-success" endIcon={<SendIcon />}>Submit</Button>
           </Grid>
         </Grid>
       </form>
     </Grid>
   </Grid>
+  <Footer/>
 </Box>
   );
 };

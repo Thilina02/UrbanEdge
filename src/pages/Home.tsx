@@ -2,10 +2,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import { Paper, Typography } from '@mui/material';
 import { Card,CardMedia,CardContent,CardActions } from '@mui/material';
-
-import { styled } from '@mui/material/styles';
-import Divider from '@mui/material/Divider';
-import Chip from '@mui/material/Chip';
+import Footer from '../components/Footer';
 import Homeimg11 from '../images/Homeimg1.avif';
 import Homeimg2 from '../images/Homeimg2.avif';
 import Homeimg3 from '../images/Homeimg3.avif';
@@ -15,12 +12,10 @@ import Homeimg6 from '../images/Homeimg6.avif';
 import Homeimg7 from '../images/Homeimg7.avif';
 import Showcase1 from '../images/showcase1.jpg';
 import Showcase2 from '../images/showcase2.jpg';
-import Showcase3 from '../images/showcase3.jpg';
-import Showcase7 from '../images/showcaseimg7.jpeg';
 import Showcase4 from '../images/showcaseimg6.jpg';
 import Showcase5 from '../images/showcase5.jpeg';
 import Homeimg8 from '../images/Homeimg8.avif';
-import { Stack,  Button } from "@mui/material";
+import { Button } from "@mui/material";
 import Navbar from '../components/Navbar';
 import './Home.css';
 
@@ -420,11 +415,11 @@ const CheckHome = () => {
           
         </Grid>
 
-
-        
+       
        </Grid>
 
-
+       <Footer/>
+        
        </div>
     
       

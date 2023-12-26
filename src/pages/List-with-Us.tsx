@@ -12,6 +12,7 @@ import TretailSpace from '../images/Tretailspace.avif'
 import Tplantation from '../images/Tplantation&state.avif'
 import Tfactory from '../images/Tfactory.avif'
 import { Link as RouterLink } from 'react-router-dom';
+import Footer from '../components/Footer'
 export const ListwithUs= () => {
 
 
@@ -255,7 +256,7 @@ export const ListwithUs= () => {
       </div>
 
 
- 
+ <Footer/>
         
     </div>
     
