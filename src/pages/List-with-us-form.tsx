@@ -2,88 +2,95 @@ import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
-import { Grid, Typography } from '@mui/material'
+import { Grid, Typography } from '@mui/material';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
 import { SelectChangeEvent } from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import Navbar from '../components/Navbar';
-import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
+import axios from 'axios';
+import { createBrowserHistory } from 'history';
 
+function MyForm() {
+const [title, setTitle] = useState('');
+const [perches, setPerches] = useState('');
+const [rooms, setRooms] = useState('');
+const [bedrooms, setBedrooms] = useState('');
+const [bathrooms, setBathrooms] = useState('');
+const [address, setAddress] = useState('');
+const [price, setPrice] = useState('');
+const [furtherEnquiries, setFurtherEnquiries] = useState('');
+const [photos, setPhoto] = useState('');
+const [successmessage, setSuccessMessage] = useState('');
+const [errorMessage, setErrorMessage] = useState('');
+const [negotiable, setNegotiable] = useState<boolean | undefined>(undefined);
+// OR
+// const [negotiable, setNegotiable] = useState<boolean>(false);
 
-interface FormData {
-  title: string;
-  perches: string;
-  rooms: string;
-  bedrooms: number;
-  bathrooms: number;
-  address: string;
-  price: number;
-  negotiable: boolean;
-  furtherEnquiries: string;
-  photos: File[];
-}
+const navigate = useNavigate();
 
-const MyForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    title: '',
-    perches: '',
-    rooms: '',
-    bedrooms: 0,
-    bathrooms: 0,
-    address: '',
-    price: 0,
-    negotiable: false,
-    furtherEnquiries: '',
-    photos: [],
-  });
+const handleSubmit =async (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
 
-  const handleChange = (event: SelectChangeEvent<string>) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [event.target.name as string]: event.target.value as string,
-    }));
-  };
+  try{
 
-  const handleTextFieldChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    setFormData((prevData) => ({ ...prevData, [event.target.name]: event.target.value }));
-  };
+    //send input to the server
 
-  const handleCheckboxChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    setFormData((prevData) => ({ ...prevData, [event.target.name]: event.target.checked }));
-  };
+    const response = await axios.post('http://localhost:8070/listings/submit-listing',{
+      title,
+      perches,
+      rooms,
+      bedrooms,
+      bathrooms,
+      address,
+      price,
+      furtherEnquiries,
+      negotiable,
+      photos,
+    });
 
-  const handlePhotoUpload: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    if (event.target.files) {
-      const newPhotos = Array.from(event.target.files) as File[];
-      setFormData((prevData) => ({ ...prevData, photos: [...prevData.photos, ...newPhotos] }));
+    console.log(response.status);
+    if(response.status === 200){
+      setSuccessMessage('Your post submitted successfully')
+      setErrorMessage('');
+      navigate({
+        pathname: `/GetShipping/${response.data._id}`,
+      });
     }
-  };
+  } catch(err){
+    console.error(err);
+    setErrorMessage('Error listing your post');
+    setSuccessMessage('');
+  }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log('Form data submitted:', formData);
-  };
- 
 
-  const buttonStyles = {
-    marginTop: '20px',
-  };
+}
+const handlePhotoUpload = () => {
+  // Implement your photo upload logic here
+  // You may want to update the 'photos' state with the selected files
+};
+
+
+
+
+
+
+
   const formStyles: React.CSSProperties = {
-    marginTop:'5vh',
-    minHeight:'50vh',
+    marginTop: '5vh',
+    minHeight: '50vh',
     margin: 'auto',
     padding: '20px',
     border: '1px solid #ccc',
     borderRadius: '8px',
-    background:'white',
-    maxWidth:'100%'
+    background: 'white',
+    maxWidth: '100%',
   };
-  
 
-
+ 
   return (
     <Box >
         <Navbar/>
@@ -138,9 +145,9 @@ const MyForm: React.FC = () => {
               variant="outlined"
               fullWidth
               margin="normal"
-              name="Title"
-              value={formData.title}
-              onChange={handleTextFieldChange}
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </Grid>
 
@@ -152,8 +159,8 @@ const MyForm: React.FC = () => {
             margin="normal"
             name="perches"
             type="perches"
-            value={formData.perches}
-            onChange={handleTextFieldChange}
+            value={perches}
+            onChange={(e) => setPerches(e.target.value)}
         
         />
         </Grid>
@@ -166,8 +173,8 @@ const MyForm: React.FC = () => {
         margin="normal"
         name="rooms"
         type="tel"
-        value={formData.rooms}
-        onChange={handleTextFieldChange}
+        value={rooms}
+        onChange={(e) => setRooms(e.target.value)}
         
       />
         </Grid>
@@ -181,8 +188,8 @@ const MyForm: React.FC = () => {
             margin="normal"
             name="bedrooms"
             type="number"
-            value={formData.bedrooms}
-            onChange={handleTextFieldChange}
+            value={bedrooms}
+            onChange={(e) => setBedrooms(e.target.value)}
         
         />
         </Grid>
@@ -195,8 +202,8 @@ const MyForm: React.FC = () => {
         margin="normal"
         name="bathrooms"
         type="number"
-        value={formData.bathrooms}
-        onChange={handleTextFieldChange}
+        value={bathrooms}
+        onChange={(e) => setBathrooms(e.target.value)}
       />
         </Grid>
 
@@ -208,8 +215,8 @@ const MyForm: React.FC = () => {
         fullWidth
         margin="normal"
         name="address"
-        value={formData.address}
-        onChange={handleTextFieldChange}
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
        
       />
 
@@ -221,8 +228,8 @@ const MyForm: React.FC = () => {
         fullWidth
         margin="normal"
         name="price"
-        value={formData.price}
-        onChange={handleTextFieldChange}
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
        
       />
 
@@ -234,9 +241,9 @@ const MyForm: React.FC = () => {
         variant="outlined"
         fullWidth
         margin="normal"
-        name="furtherEnq"
-        value={formData.furtherEnquiries}
-        onChange={handleTextFieldChange}
+        name="furtherEnquiries"
+        value={furtherEnquiries}
+        onChange={(e) => setFurtherEnquiries(e.target.value)}
        
       />
 
@@ -244,6 +251,17 @@ const MyForm: React.FC = () => {
 
           {/* Repeat the pattern for other form fields */}
           
+          <Grid item xs={12}>
+      <InputLabel> Price Negotiable?</InputLabel>
+      <input
+        type="checkbox"
+        id="negotiable"
+        name="negotiable"
+        checked={negotiable || false} // Provide a default value to avoid the warning
+        onChange={() => setNegotiable((prevValue) => !prevValue)}
+      />
+    </Grid>
+
           <Grid item xs={12}>
             <InputLabel>Upload Photos</InputLabel>
           </Grid>
@@ -288,7 +306,7 @@ const MyForm: React.FC = () => {
           <Grid item xs={12}>
            
             <Button type="submit" variant='contained' color="primary"   
-              component={RouterLink} to="/Listing-success" endIcon={<SendIcon />}>Submit</Button>
+               endIcon={<SendIcon />}>Submit</Button>
           </Grid>
         </Grid>
       </form>
