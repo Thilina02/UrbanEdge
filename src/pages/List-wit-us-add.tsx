@@ -1,20 +1,27 @@
 import { Button, Grid, Typography } from '@mui/material';
-import React from 'react';
+
+import React, { useContext, useState } from 'react';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { Link as RouterLink } from 'react-router-dom'; 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import TellUs from '../images/TellUs.avif'
+import { useNavigate } from 'react-router-dom';
+import { UserContext  } from '../contex/userContex';
 import ArrowRight from '@mui/icons-material/ArrowRight'; 
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+ 
 export const Listwitusform = () => {
   const [age, setAge] = React.useState<string | number>('');
   const [propertyType, setPropertyType] = React.useState<string | number>('');
   const [openPropertyType, setOpenPropertyType] = React.useState(false);
   const [openAge, setOpenAge] = React.useState(false);
+  const { login, logout, user } = useContext(UserContext);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(user !== null);
 
+
+  
   const handleChangeAge = (event: SelectChangeEvent<typeof age>) => {
     setAge(event.target.value);
   };
@@ -39,6 +46,42 @@ export const Listwitusform = () => {
     setOpenAge(true);
   };
 
+  // Replace with your actual authentication context
+ 
+  const history = useNavigate();
+
+  const handleDoneClick = () => {
+    if (age === 10) {
+      // User selected "Buy"
+      if (isAuthenticated) {
+        // User is logged in, navigate to the showcast page for Buy
+        history('/ShowcastBuyPage');
+      } else {
+        // User is not logged in, navigate to the login page
+        // In a real application, you may want to redirect back to this page after login
+        history('/All-Showcast-Items');
+      }
+    }else if(age === 20){
+      if(isAuthenticated){
+        history('/Rent-Property-form')
+      }
+      else{
+        history('/Rent-Property-form')
+      }
+    } else if (age === 30) {
+      // User selected "Sell"
+      if (isAuthenticated) {
+        // User is logged in, navigate to another page for selling
+        history('/List-with-us-form');
+      } else {
+        // User is not logged in, navigate to the login page
+        // In a real application, you may want to redirect back to this page after login
+        history('/List-with-us-form');
+      }
+    }
+    // You can add more conditions based on other values if needed
+  };
+
   return (
     <div>
       <Navbar/>
@@ -59,41 +102,9 @@ export const Listwitusform = () => {
           Tell us what are you looking for?
         </Typography>
 
-        <Grid container columns={16} sx={{ marginTop: '10vh' }}>
-          <Grid item xs={8} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: '-10vh' }}>
-            <Button sx={{ display: 'block', mt: 2 ,color:'white',fontWeight:'700'}} onClick={handleOpenPropertyType}>
-              Property type
-            </Button>
-            <FormControl sx={{ m: 1, minWidth: 220 ,color:'white'}}>
-              <InputLabel id='demo-controlled-open-select-label' style={{color:'white'}}>Property</InputLabel>
-              <Select
-                labelId='demo-controlled-open-select-label'
-                id='demo-controlled-open-select'
-                open={openPropertyType}
-                onClose={handleClosePropertyType}
-                onOpen={handleOpenPropertyType}
-                value={propertyType}
-                label='Property'
-                onChange={handleChangePropertyType}
-                style={{color:'white'}}
-              >
-                <MenuItem value=''>
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Apartment</MenuItem>
-                <MenuItem value={20}>Villa</MenuItem>
-                <MenuItem value={30}>Hotel</MenuItem>
-                <MenuItem value={40}>House</MenuItem>
-                <MenuItem value={50}>Office Building</MenuItem>
-                <MenuItem value={60}>Commercial land</MenuItem>
-                <MenuItem value={70}>Land</MenuItem>
-                <MenuItem value={80}>Factory</MenuItem>
-                <MenuItem value={90}>Retail Space</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-         
-          <Grid item xs={8} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid container columns={12} sx={{ marginTop: '10vh' }}>
+          
+          <Grid item xs={11} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Button sx={{ display: 'block', mt: 2,color:'white',fontWeight:'700' }} onClick={handleOpenAge}>
               I am looking to
             </Button>
@@ -123,7 +134,7 @@ export const Listwitusform = () => {
          
         </Grid>
         
-        <Button variant='contained' style={{marginTop:'10vh'}} component={RouterLink} to="/List-with-us-form">
+        <Button variant='contained' style={{marginTop:'10vh'}} onClick={handleDoneClick}/*component={RouterLink} to="/List-with-us-form"*/>
           Done
         </Button>
       </div>

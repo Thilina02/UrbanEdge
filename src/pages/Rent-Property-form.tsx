@@ -15,9 +15,9 @@ import Footer from '../components/Footer';
 import axios from 'axios';
 import { createBrowserHistory } from 'history';
 
-function ListwithUs() {
+function RentProperty() {
 const [title, setTitle] = useState('');
-const [perches, setPerches] = useState('');
+const [KeyMoney, setKeyMoney] = useState('');
 const [rooms, setRooms] = useState('');
 const [bedrooms, setBedrooms] = useState('');
 const [bathrooms, setBathrooms] = useState('');
@@ -42,7 +42,7 @@ const handleSubmit =async (event: React.FormEvent<HTMLFormElement>) => {
 
     const response = await axios.post('http://localhost:8070/listings/submit-listing',{
       title,
-      perches,
+      KeyMoney,
       rooms,
       bedrooms,
       bathrooms,
@@ -103,7 +103,7 @@ const handlePhotoUpload = () => {
                    
                         fontWeight:'700',
                         padding:'20vh',
-                        color:'white'}}>List your property for sell here.</Typography>
+                        color:'white'}}>List your property for rent here.</Typography>
                         <Typography variant='subtitle1'
                          style={{
                            marginTop:'-37vh',
@@ -154,14 +154,14 @@ const handlePhotoUpload = () => {
 
           <Grid xs={4} style={{padding:'20px'}}>
             <TextField
-            label="Perches(Sq Ft)"
+            label="KeyMoney"
             variant="outlined"
             fullWidth
             margin="normal"
-            name="perches"
-            type="perches"
-            value={perches}
-            onChange={(e) => setPerches(e.target.value)}
+            name="KeyMoney"
+            type="KeyMoney"
+            value={KeyMoney}
+            onChange={(e) => setKeyMoney(e.target.value)}
         
         />
         </Grid>
@@ -318,4 +318,4 @@ const handlePhotoUpload = () => {
   );
 };
 
-export default ListwithUs;
+export default RentProperty;
