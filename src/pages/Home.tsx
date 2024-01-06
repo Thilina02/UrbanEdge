@@ -17,6 +17,7 @@ import Showcase5 from '../images/showcase5.jpeg';
 import Homeimg8 from '../images/Homeimg8.avif';
 import { Button } from "@mui/material";
 import Navbar from '../components/Navbar';
+import { Link as RouterLink } from 'react-router-dom';
 import './Home.css';
 
 
@@ -63,7 +64,7 @@ const CheckHome = () => {
 
       <Grid container xs={8.8}>
         <Grid xs={12}>
-        <Typography variant='h3' style={{fontWeight:"bold", marginTop:"10vh"}}>Showcase property</Typography>
+        <Typography variant='h3' style={{fontWeight:"bold", marginTop:"10vh"}}>Tell us what are you looking for?</Typography>
       <Typography variant='body1' style={{  marginTop:"1vh", marginBottom:"3vh"}}>
         Choose from a vast array of residential or commercial properties that
         we have listed for sale or rental.
@@ -77,7 +78,7 @@ const CheckHome = () => {
             
     </div>
     {/* Grid starts here*/ }
-      <Grid container xs={12}  style={{width:'270vh', display:"fixed", justifyContent:"center" }}  >
+      <Grid container xs={12}  style={{ display:"fixed", justifyContent:"center" }}  >
         <Grid xs={2} style={{ margin: '0 1rem' }}>
         <Paper elevation={3}>
         <Card sx={{ maxWidth: 400}}>
@@ -204,9 +205,10 @@ const CheckHome = () => {
         <Button
       variant="contained"
       color="primary" style={{marginTop:"5vh"}}
+      component={RouterLink} to="/List-with-us-add"
      
     >
-      see more 
+     Tell Us
     </Button>
 
    
@@ -217,8 +219,9 @@ const CheckHome = () => {
       <Typography variant='h3' style={{ fontWeight:"bold", fontSize:"40px", textAlign: 'center'}}>List your property with us</Typography>
         <Typography variant='h6' style={{ fontWeight:"bold" , textAlign: 'center'}}>Sri Lanka's Best And Largest Real State Portfolio</Typography>
         <Button variant='contained'
-      style={{marginTop: '1rem'}}
-      >List here</Button>
+        style={{marginTop: '1rem'}}
+        component={RouterLink} to="/List-with-us"
+        >List here</Button>
 
       </Grid>
       

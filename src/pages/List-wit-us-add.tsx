@@ -124,9 +124,10 @@ export const Listwitusform = () => {
                 <MenuItem value=''>
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={10}>Buy</MenuItem>
-                <MenuItem value={20}>Rent</MenuItem>
-                <MenuItem value={30}>Sell</MenuItem>
+                <MenuItem value={10}>Buy a property</MenuItem>
+                <MenuItem value={40}>Rent a propert</MenuItem>
+                <MenuItem value={30}>Sell my property</MenuItem>
+                <MenuItem value={20}>Rent my property</MenuItem>
               </Select>
             </FormControl>
           
