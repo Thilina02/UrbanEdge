@@ -17,14 +17,15 @@ import { createBrowserHistory } from 'history';
 
 function RentProperty() {
 const [title, setTitle] = useState('');
-const [KeyMoney, setKeyMoney] = useState('');
+const [Keymoney, setKeymoney] = useState('');
 const [rooms, setRooms] = useState('');
 const [bedrooms, setBedrooms] = useState('');
 const [bathrooms, setBathrooms] = useState('');
 const [address, setAddress] = useState('');
 const [price, setPrice] = useState('');
-const [furtherEnquiries, setFurtherEnquiries] = useState('');
+const [furtherEnq, setfurtherEnq] = useState('');
 const [photos, setPhoto] = useState('');
+const [city, setCity] = useState('');
 const [successmessage, setSuccessMessage] = useState('');
 const [errorMessage, setErrorMessage] = useState('');
 const [negotiable, setNegotiable] = useState<boolean | undefined>(undefined);
@@ -40,16 +41,17 @@ const handleSubmit =async (event: React.FormEvent<HTMLFormElement>) => {
 
     //send input to the server
 
-    const response = await axios.post('http://localhost:8070/listings/submit-listing',{
+    const response = await axios.post('http://localhost:8070/RentProperties/submit-renting',{
       title,
-      KeyMoney,
+      Keymoney,
       rooms,
       bedrooms,
       bathrooms,
       address,
       price,
-      furtherEnquiries,
+      furtherEnq,
       negotiable,
+      city,
       photos,
     });
 
@@ -57,8 +59,8 @@ const handleSubmit =async (event: React.FormEvent<HTMLFormElement>) => {
     if(response.status === 200){
       setSuccessMessage('Your post submitted successfully')
       setErrorMessage('');
-      navigate({
-        pathname: `/GetShipping/${response.data._id}`,
+      navigate({ ///${response.data._id}
+        pathname: `/Listing-success`,
       });
     }
   } catch(err){
@@ -140,177 +142,191 @@ const handlePhotoUpload = () => {
       {/* Your form goes here */}
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
-          <Grid item xs={4} style={{padding:'20px'}}>
-          <TextField
-              label="Title(Property Type)"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </Grid>
+        <Grid item xs={4} style={{ padding: '20px' }}>
+                <TextField
+                  label="Title(Property Type)"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  name="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </Grid>
 
-          <Grid xs={4} style={{padding:'20px'}}>
-            <TextField
-            label="KeyMoney"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            name="KeyMoney"
-            type="KeyMoney"
-            value={KeyMoney}
-            onChange={(e) => setKeyMoney(e.target.value)}
-        
-        />
-        </Grid>
+              <Grid item xs={4} style={{ padding: '20px' }}>
+                <TextField
+                  label="Key money"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  name="Keymoney"
+                  type="Keymoney"
+                  value={Keymoney}
+                  onChange={(e) => setKeymoney(e.target.value)}
+                />
+              </Grid>
 
-        <Grid xs={4} style={{padding:'20px'}}>
-        <TextField
-        label="Rooms"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-        name="rooms"
-        type="tel"
-        value={rooms}
-        onChange={(e) => setRooms(e.target.value)}
-        
-      />
-        </Grid>
+              <Grid item xs={4} style={{ padding: '20px' }}>
+                <TextField
+                  label="Rooms"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  name="rooms"
+                  type="tel"
+                  value={rooms}
+                  onChange={(e) => setRooms(e.target.value)}
+                />
+              </Grid>
 
-        <Grid xs={4} style={{padding:'20px'}}>
+              <Grid item xs={4} style={{ padding: '20px' }}>
+                <TextField
+                  label="Bedrooms"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  name="bedrooms"
+                  type="number"
+                  value={bedrooms}
+                  onChange={(e) => setBedrooms(e.target.value)}
+                />
+              </Grid>
+
+              <Grid item xs={4} style={{ padding: '20px' }}>
+                <TextField
+                  label="Bathrooms"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  name="bathrooms"
+                  type="number"
+                  value={bathrooms}
+                  onChange={(e) => setBathrooms(e.target.value)}
+                />
+              </Grid>
+
+              <Grid item xs={4} style={{ padding: '20px' }}>
+                <TextField
+                  label="Address"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  name="address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </Grid>
+
+              <Grid item xs={6} style={{ padding: '20px' }}>
+                <TextField
+                  label="Monthly Price"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  name="Monthlyprice"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+              </Grid>
+
+              <Grid item xs={6} style={{ padding: '20px' }}>
+                <TextField
+                  label="City"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  name="city"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12} style={{ padding: '20px' }}>
+                <TextField
+                  label="Further Enquires"
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={6}
+                  margin="normal"
+                  name="furtherEnq"
+                  value={furtherEnq}
+                  onChange={(e) => setfurtherEnq(e.target.value)}
+                 
+                />
+              </Grid>
+
+             
+
            
-        <TextField
-            label="Bedrooms"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            name="bedrooms"
-            type="number"
-            value={bedrooms}
-            onChange={(e) => setBedrooms(e.target.value)}
-        
-        />
-        </Grid>
 
-        <Grid xs={4} style={{padding:'20px'}}>
-        <TextField
-        label="Bathrooms"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-        name="bathrooms"
-        type="number"
-        value={bathrooms}
-        onChange={(e) => setBathrooms(e.target.value)}
-      />
-        </Grid>
+              
 
-        <Grid xs={4} style={{padding:'20px'}}>
-           
-        <TextField
-        label="Address"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-        name="address"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-       
-      />
+              <Grid item xs={12}>
+                <InputLabel> Price Negotiable?</InputLabel>
+                <input
+                  type="checkbox"
+                  id="negotiable"
+                  name="negotiable"
+                  checked={negotiable || false} // Provide a default value to avoid the warning
+                  onChange={() => setNegotiable((prevValue) => !prevValue)}
+                />
+              </Grid>
 
-        </Grid>
-        <Grid xs={4} style={{padding:'20px'}}>
-        <TextField
-        label="Price"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-        name="price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-       
-      />
+              <Grid item xs={12}>
+                <InputLabel>Upload Photos</InputLabel>
+              </Grid>
 
-        </Grid>
+              <Grid item xs={6}>
+                <label htmlFor="photo-upload">
+                  <input
+                    style={{ display: 'none' }}
+                    id="photo-upload"
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handlePhotoUpload}
+                  />
+                  <Button
+                    variant="outlined"
+                    component="span"
+                    startIcon={<PhotoCameraIcon />}
+                    style={{ marginRight: '10px' }}
+                  >
+                    Take Photos
+                  </Button>
+                </label>
+              </Grid>
 
-        <Grid xs={8} style={{padding:'20px'}}>
-        <TextField
-        label="Further Enquires"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-        name="furtherEnquiries"
-        value={furtherEnquiries}
-        onChange={(e) => setFurtherEnquiries(e.target.value)}
-       
-      />
+              <Grid item xs={12}>
+                <label htmlFor="file-upload">
+                  <input
+                    style={{ display: 'none' }}
+                    id="file-upload"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    multiple
+                    onChange={handlePhotoUpload}
+                  />
+                  <Button variant="outlined" component="span" startIcon={<AttachFileIcon />}>
+                    Attach Files
+                  </Button>
+                </label>
+              </Grid>
 
-        </Grid>
-
-          {/* Repeat the pattern for other form fields */}
-          
-          <Grid item xs={12}>
-      <InputLabel> Price Negotiable?</InputLabel>
-      <input
-        type="checkbox"
-        id="negotiable"
-        name="negotiable"
-        checked={negotiable || false} // Provide a default value to avoid the warning
-        onChange={() => setNegotiable((prevValue) => !prevValue)}
-      />
-    </Grid>
-
-          <Grid item xs={12}>
-            <InputLabel>Upload Photos</InputLabel>
-          </Grid>
-
-          <Grid item xs={6}>
-            <label htmlFor="photo-upload">
-              <input
-                style={{ display: 'none' }}
-                id="photo-upload"
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handlePhotoUpload}
-              />
-              <Button
-                variant="outlined"
-                component="span"
-                startIcon={<PhotoCameraIcon />}
-                style={{ marginRight: '10px' }}
-              >
-                Take Photos
-              </Button>
-            </label>
-          </Grid>
-
-          <Grid item xs={12}>
-            <label htmlFor="file-upload">
-              <input
-                style={{ display: 'none' }}
-                id="file-upload"
-                type="file"
-                accept=".pdf,.doc,.docx"
-                multiple
-                onChange={handlePhotoUpload}
-              />
-              <Button variant="outlined" component="span" startIcon={<AttachFileIcon />}>
-                Attach Files
-              </Button>
-            </label>
-          </Grid>
-
-          <Grid item xs={12}>
-           
-            <Button type="submit" variant='contained' color="primary"   
-               endIcon={<SendIcon />}>Submit</Button>
-          </Grid>
-        </Grid>
+              <Grid item xs={12}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  endIcon={<SendIcon />}
+                >
+                  Submit
+                </Button>
+              </Grid>
+            </Grid>
       </form>
+      
     </Grid>
   </Grid>
   <Footer/>

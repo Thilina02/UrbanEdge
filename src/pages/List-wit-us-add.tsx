@@ -78,6 +78,12 @@ export const Listwitusform = () => {
         // In a real application, you may want to redirect back to this page after login
         history('/List-with-us-form');
       }
+    }else if(age === 40){
+      if(isAuthenticated){
+        history('/Rent-a-Property')
+      } else {
+        history('/Rent-a-Property')
+      }
     }
     // You can add more conditions based on other values if needed
   };

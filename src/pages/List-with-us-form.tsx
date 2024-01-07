@@ -58,8 +58,8 @@ const handleSubmit =async (event: React.FormEvent<HTMLFormElement>) => {
     if(response.status === 200){
       setSuccessMessage('Your post submitted successfully')
       setErrorMessage('');
-      navigate({
-        pathname: `/GetShipping/${response.data._id}`,
+      navigate({ ///${response.data._id}
+        pathname: `/Listing-success`,
       });
     }
   } catch(err){

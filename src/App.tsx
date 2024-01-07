@@ -13,7 +13,8 @@ import { Listwitusform } from './pages/List-wit-us-add';
 import Listwithusform from './pages/List-with-us-form';
 import SuccessListing from './pages/SuccessListing';
 import RentProperty from './pages/Rent-Property-form';
-import ShowCase from './pages/ShowCase';
+import BuyAproperty from './pages/Buy-a-property';
+import Rentaproperty from './pages/Rent-a-property';
 // Import ThemeProvider and createTheme
 import { ThemeProvider } from '@mui/system';
 
@@ -38,9 +39,9 @@ function App() {
             <Route path='/List-with-us-add' element={<Listwitusform />} />
             <Route path='/List-with-us-form' element={<Listwithusform />} />
             <Route path='/Listing-success' element={<SuccessListing />} />
-            <Route path='/All-Showcast-Items' element={<ShowCase />} />
+            <Route path='/All-Showcast-Items' element={<BuyAproperty />} />
             <Route path='/Rent-Property-form' element={<RentProperty />} />
-            
+            <Route path='/Rent-a-Property' element={<Rentaproperty />} />
           </Routes>
         </Router>
       </UserContextProvider>
