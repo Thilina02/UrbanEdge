@@ -15,6 +15,7 @@ import SuccessListing from './pages/SuccessListing';
 import RentProperty from './pages/Rent-Property-form';
 import BuyAproperty from './pages/Buy-a-property';
 import Rentaproperty from './pages/Rent-a-property';
+import Imgetest from './pages/imgetest';
 // Import ThemeProvider and createTheme
 import { ThemeProvider } from '@mui/system';
 
@@ -42,6 +43,7 @@ function App() {
             <Route path='/All-Showcast-Items' element={<BuyAproperty />} />
             <Route path='/Rent-Property-form' element={<RentProperty />} />
             <Route path='/Rent-a-Property' element={<Rentaproperty />} />
+            <Route path='/img' element={<Imgetest />} />
           </Routes>
         </Router>
       </UserContextProvider>

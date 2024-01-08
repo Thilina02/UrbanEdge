@@ -23,7 +23,7 @@ export const ListwithUs= () => {
         <Grid container xs={12}   style={{background:'white', minHeight: '40vh',display:'grid',placeItems:'center' }}>
         <Grid xs={9} style={{}} >
           <div >
-            <Typography variant='h3'style={{marginTop:'10vh',fontWeight:'bold',fontFamily:' Georgia, serif'}}>List your property with us.</Typography>
+            <Typography variant='h4'style={{marginTop:'10vh',fontWeight:'bold',fontFamily:' Georgia, serif'}}>List your property with us.</Typography>
             <Typography variant='body1'  color="text.secondary"style={{marginTop:'3vh'}}>
               UrbanEdge ensures a seamless and profitable property
               selling or renting experience through tailored
@@ -33,7 +33,7 @@ export const ListwithUs= () => {
           </div>
 
         </Grid>
-          <div style={{borderTop:'2px solid #000', width:'100%', marginTop:'20px'}}></div>
+        
       </Grid>
       <Typography variant='h4'  style={{ display:'grid',placeItems:'center',fontWeight:'800'}}>Types Of Property For Buy</Typography>
 
@@ -200,13 +200,13 @@ export const ListwithUs= () => {
 
       {/*Why listing with us */}
       <Grid container xs={12} style={{marginTop:'15vh',display:'grid',placeItems:'center' }}>
-        <Grid xs={3}>      
+        <Grid xs={6}>      
         <Typography variant='h4' style={{fontWeight:'800'}}>Why List With Us?</Typography>
         </Grid>
       </Grid>
 
 
-      <div className='listingCard'>
+      <div className='listingCard' style={{marginBottom:'10vh'}}>
       <div className="cardddBox">
         <div className="carddd">
           <div className="h4">Personalized Consultations</div>

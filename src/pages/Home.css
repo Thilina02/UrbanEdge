@@ -4,13 +4,13 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #c3c9c3;
+    background-color: #e2dff8;
 }
 .UpImages {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
+    min-height: 100vh;
     width: 100%;
     background: url(../images/homeUp.avif);
     background-size:cover;
@@ -223,7 +223,7 @@ body{
   /*heyyyy*/
 
   .cardd {
-  width: 320px;
+  width: 300px;
   height: 280px;
   background-color: #47528a;
   background-image: linear-gradient(43deg, #97a4e7 0%, #4e35a1 46%, #545381 100%);
@@ -235,6 +235,9 @@ body{
   perspective: 1000px;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
   cursor: pointer;
+  margin-bottom: 10vh;
+ 
+ 
 }
 
 .cardd-content {
@@ -299,6 +302,119 @@ body{
 
 .cardd:hover:after {
   transform: translateX(100%);
+}
+
+.accordion{
+  width: 76%;
+  height: 350px;
+  overflow: hidden;
+  margin: 50px auto;
+}
+
+.uli{
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+.lilu{
+  --img-1: url(../images/showcase1.avif);
+  --img-2: url(../images/showcase2.avif);
+  --img-3: url(../images/showcase3.avif);
+  --img-4: url(../images/showcase4.avif);
+
+  &:nth-child(1){
+      background-image: var(--img-1);
+  }
+  &:nth-child(2){
+      background-image: var(--img-2);
+  }
+  &:nth-child(3){
+      background-image: var(--img-3);
+  }
+  &:nth-child(4){
+      background-image: var(--img-4);
+  }
+
+  width: 30%;
+  height: 350px;
+  display: table-cell;
+  vertical-align: bottom;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  transition: all 500ms ease ;
+}
+
+li div{
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+li div a{
+  display: block;
+  height: 250px;
+  width: 100%;
+  color: rgb(234, 201, 136);
+  position: relative;
+  z-index: 3;
+
+  padding: 15px 20px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Open Sans, sans-serif;
+  transition: all 200ms ease;
+
+}
+
+li div a *{
+  width: 100%;
+  margin: 0;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 5;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateX(-20px);
+  transition: all 400ms ease;
+
+}
+
+li div a h2{
+  font-family: Montserrat, sans-serif;
+  text-overflow: clip;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  top: 160px;
+}
+
+li div a p{
+  top: 160px;
+  font-size: 13.5px;
+
+}
+
+li div a * {
+  opacity: 0;
+}
+
+ul :hover li {
+  width: 10%;
+}
+
+ul:hover li:hover{
+  width: 80%;
+}
+
+
+ul:hover li:hover a *{
+  opacity: 1;
+  transform: translateX(0);
 }
 
 

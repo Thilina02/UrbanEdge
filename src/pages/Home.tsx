@@ -10,8 +10,8 @@ import Homeimg4 from '../images/Homeimg4.avif';
 import Homeimg5 from '../images/Homeimg5.avif';
 import Homeimg6 from '../images/Homeimg6.avif';
 import Homeimg7 from '../images/Homeimg7.avif';
-import Showcase1 from '../images/showcase1.jpg';
-import Showcase2 from '../images/showcase2.jpg';
+
+import Showcase2 from '../images/showcase2.avif';
 import Showcase4 from '../images/showcaseimg6.jpg';
 import Showcase5 from '../images/showcase5.jpeg';
 import Homeimg8 from '../images/Homeimg8.avif';
@@ -62,162 +62,74 @@ const CheckHome = () => {
 
       </div>
 
-      <Grid container xs={8.8}>
+      <Grid container xs={5.3}>
         <Grid xs={12}>
-        <Typography variant='h3' style={{fontWeight:"bold", marginTop:"10vh"}}>Tell us what are you looking for?</Typography>
-      <Typography variant='body1' style={{  marginTop:"1vh", marginBottom:"3vh"}}>
-        Choose from a vast array of residential or commercial properties that
-        we have listed for sale or rental.
+        <Typography variant='h4' style={{fontWeight:"bold", marginTop:"10vh", display:'grid',placeItems:'center'}}>Tell us what are you looking for?</Typography>
+      <Typography variant='body1' 
+      style={{display:'grid',placeItems:'center', padding:'10px'}}>
+      Tell us what you need in order for us to help you simplify it.
       </Typography>
 
         </Grid>
       </Grid>
 
-      
-    <div className='ShowCaseBpox' >
-            
-    </div>
-    {/* Grid starts here*/ }
-      <Grid container xs={12}  style={{ display:"fixed", justifyContent:"center" }}  >
-        <Grid xs={2} style={{ margin: '0 1rem' }}>
-        <Paper elevation={3}>
-        <Card sx={{ maxWidth: 400}}>
-      <CardMedia
-        sx={{ height: 140}}
-        image={Showcase4}
-        title="House"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          House
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         House for sale
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         AluthGama
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         LKR 1,700,000
-        </Typography>
-      </CardContent>
-      <CardActions>
-        
-        <Button size="small">See More</Button>
-      </CardActions>
-    </Card>
-    </Paper>
+      <div className='accordion'>
+      <ul className='uli'>
+        <li className='lilu'>
+          <div>
+            <a href='#'>
+              <h2>UrbanEdge Signature Homes</h2>
+              <Typography>Elevate Your Lifestyle in Exceptional Residences</Typography>
+            </a>
+          </div>
+        </li>
+        <li className='lilu'>
+          <div>
+          <a href='#'>
+              <h2>UrbanEdge Executive Enclaves</h2>
+              <Typography>Elevate Your Workspace Experience in the Pinnacle <br/>of Professional Prestige</Typography>
+            </a>
+          </div>
 
-        </Grid>
-        
-        <Grid xs={2} style={{ margin: '0 1rem' }}>
-        <Paper elevation={3} >
-        <Card sx={{ maxWidth: 400 }}>
-      <CardMedia
-        sx={{ height: 140}}
-        image={Showcase2}
-        title="Apartment"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Apartment
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         Apartment for rent
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         Athurugiriya
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         LKR 1,200,00
-        </Typography>
-      </CardContent>
-      <CardActions>
-      <Button size="small">See More</Button>
-      </CardActions>
-    </Card>
-    </Paper>
+        </li>
+        <li  className='lilu'>
+          <div>
+          <a href='#'>
+              <h2>UrbanEdge Luxury Residences</h2>
+              <Typography>Discover the Epitome of Urban Living Excellence</Typography>
+            </a>
+          </div>
 
-        </Grid>
-        
-        <Grid xs={2} style={{ margin: '0 1rem' }}>
-        <Paper elevation={3}  >
-        <Card sx={{ maxWidth: 400 }}>
-      <CardMedia
-        sx={{ height: 140}}
-        image={Showcase1}
-        title="Apartment"
-        
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Apartment
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         Apartment for sale
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         Homagama
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         LKR 1,7900,000
-        </Typography>
-      </CardContent>
-      <CardActions>
-      <Button size="small">See More</Button>
-      </CardActions>
-    </Card>
-    </Paper>
+        </li>
+        <li  className='lilu'>
+          <div>
+          <a href='#'>
+              <h2>UrbanEdge Villa Collection</h2>
+              <Typography>Unveiling Unmatched Elegance in Exclusive Living Spaces</Typography>
+            </a>
+          </div>
 
-        </Grid>
-        <Grid xs={2} style={{ margin: '0 1rem' }}>
-        <Paper elevation={3}  >
-        <Card sx={{ maxWidth: 400 }}>
-      <CardMedia
-        sx={{ height: 140}}
-        image={Showcase5}
-        title="Villa"
+        </li>
         
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Villa
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         Villa for sale
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         Alpitiya
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         LKR 1,800,000
-        </Typography>
-      </CardContent>
-      <CardActions>
-      <Button size="small">See More</Button>
-      </CardActions>
-    </Card>
-    </Paper>
-
-        </Grid>
-       
-        </Grid>
-        <Button
-      variant="contained"
-      color="primary" style={{marginTop:"5vh"}}
-      component={RouterLink} to="/List-with-us-add"
-     
-    >
-     Tell Us
-    </Button>
+      </ul>
+      </div>
+      <Button
+              variant="contained"
+              color="primary" style={{marginTop:"5vh"}}
+              component={RouterLink} to="/List-with-us-add"
+             
+            >
+             Tell Us
+            </Button>
+   
 
    
-    <div className='PropertyListing' style={{ display: 'flex', justifyContent: 'center' }}>
+    <div className='PropertyListing' >
       <div className='propListing-container'>
-      <Grid container xs={7.3}  style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', marginTop:'70px'  }}>
+      <Grid container xs={7.6}  style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', marginTop:'70px'  }}>
       <Grid xs={9}>
-      <Typography variant='h3' style={{ fontWeight:"bold", fontSize:"40px", textAlign: 'center'}}>List your property with us</Typography>
-        <Typography variant='h6' style={{ fontWeight:"bold" , textAlign: 'center'}}>Sri Lanka's Best And Largest Real State Portfolio</Typography>
+      <Typography variant='h4' style={{ fontWeight:"bold", fontSize:"40px", textAlign: 'center'}}>List your property with us</Typography>
+        <Typography variant='h6' style={{ fontWeight:"bold" }}>Sri Lanka's Best And Largest Real State Portfolio</Typography>
         <Button variant='contained'
         style={{marginTop: '1rem'}}
         component={RouterLink} to="/List-with-us"
@@ -231,9 +143,9 @@ const CheckHome = () => {
       
     </div>
 
-    <Grid container xs={9} style={{margin:"30px"}}>
+    <Grid container xs={9.2} style={{margin:"30px"}}>
       <Grid xs={12}>
-      <Typography variant='h3' style={{fontWeight:"bold"}}>Our services</Typography>
+      <Typography variant='h4' style={{fontWeight:"bold"}}>Our services</Typography>
       <Typography variant='body1' >
           For a variety of residential and commercial real estate categories, <br></br>
           UrbanEdge provides transaction, marketing, advisory, 
@@ -299,7 +211,7 @@ const CheckHome = () => {
 
       <Grid container xs={9.2} style={{ margin: '36px'}}>
         <Grid xs={12}>
-        <Typography variant='h3' style={{fontWeight:"bold"/*,  marginLeft:"-114vh", marginTop:"10vh"*/}}>Why UrbanEdge</Typography>
+        <Typography variant='h4' style={{fontWeight:"bold"/*,  marginLeft:"-114vh", marginTop:"10vh"*/}}>Why UrbanEdge</Typography>
       <Typography variant='body1'  style={{}}>
           To guarantee that our customers make well-informed real estate decisions,
           our skilled staff combines a thorough understanding of specialized property sectors
@@ -365,11 +277,11 @@ const CheckHome = () => {
         </Grid>
 
 
-        <Grid xs={4} sx={{marginTop:'5vh'}}>
+        <Grid xs={4} sx={{marginTop:'-5vh'}}>
         <div className='cardddd' >
           <div className="cardd">
             <div className="cardd-content">
-              <Typography className="cardd-title">Transparent and Customer-Centric Approach
+              <Typography className="cardd-title">Customer-Centric Approach
               </Typography><Typography className="cardd-para">
               Transparency is the cornerstone of our relationship with our customers.
               At UrbanEdge, we believe in clear communication, fair dealings, 
@@ -383,7 +295,7 @@ const CheckHome = () => {
         </Grid>
 
 
-        <Grid xs={4} sx={{marginTop:'5vh'}}>
+        <Grid xs={4} sx={{marginTop:'-5vh'}}>
         <div className='cardddd' >
           <div className="cardd">
             <div className="cardd-content">
@@ -401,14 +313,14 @@ const CheckHome = () => {
         </Grid>
 
 
-        <Grid xs={4} sx={{marginTop:'5vh'}}>
+        <Grid xs={4} sx={{marginTop:'-5vh'}}>
         <div className='cardddd' >
           <div className="cardd">
             <div className="cardd-content">
               <Typography className="cardd-title">Innovative Design for Modern Lifestyles
               </Typography><Typography className="cardd-para">
-              UrbanEdge stands apart with its innovative and modern designs, 
-              meticulously crafted to complement and enhance the urban lifestyle. 
+              UrbanEdge stands apart with its innovative and modern designs
+              and enhance the urban lifestyle. 
               Our commitment to cutting-edge architecture ensures a unique living experience 
               that mirrors the vibrancy of city living.
               </Typography>

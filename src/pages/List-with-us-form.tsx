@@ -96,7 +96,7 @@ const handlePhotoUpload = () => {
   return (
     <Box >
         <Navbar/>
-        <div style={{background:'#5F6E72 ',height:'50vh'}}>
+        <div style={{background:'#6572C5 ',height:'50vh'}}>
             <Grid container xs={12} >
                 <Grid xs={10}>
                 <Typography variant='h3'

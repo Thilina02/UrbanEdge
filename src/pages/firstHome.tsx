@@ -7,7 +7,7 @@ import Homeimg4 from '../images/Homeimg4.avif';
 import Homeimg5 from '../images/Homeimg5.avif';
 import Homeimg6 from '../images/Homeimg6.avif';
 import Homeimg7 from '../images/Homeimg7.avif';
-import Showcase1 from '../images/showcase1.jpg';
+import Showcase1 from '../images/showcase1.avif';
 import Showcase2 from '../images/showcase2.jpg';
 import Showcase3 from '../images/showcase3.jpg';
 import Showcase7 from '../images/showcaseimg7.jpeg';
