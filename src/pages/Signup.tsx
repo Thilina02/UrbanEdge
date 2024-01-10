@@ -98,6 +98,16 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  id="phone"
+                  label="Mobile number"
+                  name="phone"
+                  
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
                   name="password"
                   label="Password"
                   type="password"

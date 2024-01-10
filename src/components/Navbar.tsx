@@ -6,16 +6,19 @@ import email from '../images/message.gif'
 import phone from '../images/phone.gif'
 import address from '../images/home.gif'
 import {
- 
   Home as HomeIcon,
   MailOutline as ContactIcon,
   ExitToApp as SignInIcon,
   PersonAdd as SignUpIcon,
 } from '@mui/icons-material';
+interface NavbarProps {
+  userSignedIn: boolean;
+}
 
-const Navbar = () => {
+
+const Navbar: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
+  const userSignedIn = true; 
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -25,6 +28,10 @@ const Navbar = () => {
     setAnchorEl(null);
   };
   const iconStyle = { color: 'black' };
+
+  const handleSubmit = () => {
+    // Handle form submission
+  }
 
   return (
     <AppBar position="static" style={{ display: "flex", backgroundColor: "#50595B" }}>
@@ -36,9 +43,8 @@ const Navbar = () => {
 
         {/* Navigation links */}
         <Button color="inherit" component={RouterLink} to="/">
-        <HomeIcon style={iconStyle} />  Home
+          <HomeIcon style={iconStyle} /> Home
         </Button>
-        
 
         {/* Contact Us dropdown */}
         <Button
@@ -47,7 +53,7 @@ const Navbar = () => {
           aria-haspopup="true"
           onClick={handleClick}
         >
-        <ContactIcon style={iconStyle} /> Contact Us
+          <ContactIcon style={iconStyle} /> Contact Us
         </Button>
         <Menu
           id="contact-menu"
@@ -55,28 +61,37 @@ const Navbar = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-         <MenuItem onClick={handleClose}>
+          <MenuItem onClick={handleClose}>
             <img src={phone} alt="email" style={{ width: '20px', marginRight: '8px' }} />
             Phone: (123) 456-7890
           </MenuItem>
           <MenuItem onClick={handleClose}>
-          <img src={email} alt="email" style={{ width: '20px', marginRight: '8px' }} />
-          Email: info@urbanedge.com</MenuItem>
+            <img src={email} alt="email" style={{ width: '20px', marginRight: '8px' }} />
+            Email: info@urbanedge.com
+          </MenuItem>
           <MenuItem onClick={handleClose}>
-          <img src={address} alt="email" style={{ width: '20px', marginRight: '8px' }} />
-          Address: 123 Main St, City</MenuItem>
+            <img src={address} alt="email" style={{ width: '20px', marginRight: '8px' }} />
+            Address: 123 Main St, City
+          </MenuItem>
         </Menu>
 
-        <Button color="inherit" component={RouterLink} to="/List-with-us" >
-        <img src={listpic} style={{width:'20px', color:'white'}}alt='slide8' /> List Your Property
-        </Button>
+        {/* List Your Property button */}
+        {userSignedIn ? (
+          <Button color="inherit" component={RouterLink} to="/List-with-us-add">
+            <img src={listpic} style={{ width: '20px', color: 'white' }} alt='slide8' onClick={handleSubmit} /> List Your Property
+          </Button>
+        ) : (
+          <Button color="inherit" component={RouterLink} to="/SignIn">
+            <img src={listpic} style={{ width: '20px', color: 'white' }} alt='slide8' /> Sign In to List Your Property
+          </Button>
+        )}
 
         {/* Additional buttons, such as login or sign up */}
         <Button color="inherit" component={RouterLink} to="/SignIn">
-        <SignInIcon  style={iconStyle}/> SignIn
+          <SignInIcon style={iconStyle} /> SignIn
         </Button>
         <Button color="inherit" component={RouterLink} to="/SignUp">
-        <SignUpIcon  style={iconStyle}/> SignUp
+          <SignUpIcon style={iconStyle} /> SignUp
         </Button>
       </Toolbar>
     </AppBar>
