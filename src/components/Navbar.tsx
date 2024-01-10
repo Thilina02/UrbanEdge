@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <img src={address} alt="email" style={{ width: '20px', marginRight: '8px' }} />
-            Address: 123 Main St, City
+            Address: 123 Main St, CityVilla
           </MenuItem>
         </Menu>
 
