@@ -96,7 +96,7 @@ function CustomSearchBar({
   return (
     <CustomSearchBarRoot>
       <TextField
-        label="What are you looking for?"
+        label="Search your property type here!"
         variant="outlined"
         fullWidth
         style={{ display: 'flex', justifyContent: 'flex-end' }}

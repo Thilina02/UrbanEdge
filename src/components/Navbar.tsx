@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Menu, MenuItem } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom'; // If you're using React Router
-import listpic from '../images/list.png'
+import add from '../images/add.png'
 import email from '../images/message.gif'
 import phone from '../images/phone.gif'
 import address from '../images/home.gif'
+import { Add } from '@mui/icons-material';
 import {
   Home as HomeIcon,
   MailOutline as ContactIcon,
@@ -42,6 +43,7 @@ const Navbar: React.FC = () => {
         </Typography>
 
         {/* Navigation links */}
+        <div style={{}}>
         <Button color="inherit" component={RouterLink} to="/">
           <HomeIcon style={iconStyle} /> Home
         </Button>
@@ -78,11 +80,11 @@ const Navbar: React.FC = () => {
         {/* List Your Property button */}
         {userSignedIn ? (
           <Button color="inherit" component={RouterLink} to="/List-with-us-add">
-            <img src={listpic} style={{ width: '20px', color: 'white' }} alt='slide8' onClick={handleSubmit} /> List Your Property
+           <Add style={iconStyle}  onClick={handleSubmit} /> List Your Property
           </Button>
         ) : (
           <Button color="inherit" component={RouterLink} to="/SignIn">
-            <img src={listpic} style={{ width: '20px', color: 'white' }} alt='slide8' /> Sign In to List Your Property
+            <Add style={iconStyle}  onClick={handleSubmit} />Sign In to List Your Property
           </Button>
         )}
 
@@ -93,7 +95,12 @@ const Navbar: React.FC = () => {
         <Button color="inherit" component={RouterLink} to="/SignUp">
           <SignUpIcon style={iconStyle} /> SignUp
         </Button>
-      </Toolbar>
+        <Button color="inherit" component={RouterLink} to="/SignUp">
+        <img src={add} alt="email" style={{ width: '20px', marginRight: '8px' }} /> Your adds
+        </Button>
+
+        </div>
+       </Toolbar>
     </AppBar>
   );
 };
