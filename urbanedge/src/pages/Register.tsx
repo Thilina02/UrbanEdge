@@ -39,6 +39,28 @@ export default function Register() {
   const [Lname, setLname] = useState('');
   const [Email, setEmail] = useState('');
   const [Mnumber, setMnumber] = useState('');
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'firstName':
+        setFname(value);
+        break;
+      case 'lastName':
+        setLname(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'phone':
+        setMnumber(value);
+        break;
+      // Add cases for other input fields if needed
+
+      default:
+        break;
+    }
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -66,7 +88,7 @@ export default function Register() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Register
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -80,7 +102,7 @@ export default function Register() {
                   label="First Name"
                   autoFocus
                   value={Fname}
-                 
+                 onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -92,6 +114,7 @@ export default function Register() {
                   name="lastName"
                   autoComplete="family-name"
                   value={Lname}
+                  onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -103,6 +126,7 @@ export default function Register() {
                   name="email"
                   autoComplete="email"
                   value={Email}
+                  onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -113,6 +137,7 @@ export default function Register() {
                   label="Mobile number"
                   name="phone"
                   value={Mnumber}
+                  onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -124,6 +149,7 @@ export default function Register() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>

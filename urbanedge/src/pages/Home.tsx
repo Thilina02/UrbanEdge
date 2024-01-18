@@ -105,7 +105,7 @@ const CheckHome = () => {
           <div>
           <a href='#'>
               <h2>UrbanEdge Villa Collection</h2>
-              <Typography>Unveiling Unmatched Elegance in Exclusive Living Spaces</Typography>
+              <Typography>Unveiling Unmatched Elegance in Exclusive Living <br/>Spaces</Typography>
             </a>
           </div>
 

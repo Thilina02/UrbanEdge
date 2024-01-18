@@ -89,11 +89,11 @@ const Navbar: React.FC = () => {
         )}
 
         {/* Additional buttons, such as login or sign up */}
-        <Button color="inherit" component={RouterLink} to="/SignIn">
-          <SignInIcon style={iconStyle} /> SignIn
+        <Button color="inherit" component={RouterLink} to="/Login">
+          <SignInIcon style={iconStyle} /> Login
         </Button>
-        <Button color="inherit" component={RouterLink} to="/SignUp">
-          <SignUpIcon style={iconStyle} /> SignUp
+        <Button color="inherit" component={RouterLink} to="/Register">
+          <SignUpIcon style={iconStyle} /> Register
         </Button>
         <Button color="inherit" component={RouterLink} to="/Your-Adds">
         <img src={add} alt="email" style={{ width: '20px', marginRight: '8px' }} /> Your adds
