@@ -10,10 +10,6 @@ import Homeimg4 from '../images/Homeimg4.avif';
 import Homeimg5 from '../images/Homeimg5.avif';
 import Homeimg6 from '../images/Homeimg6.avif';
 import Homeimg7 from '../images/Homeimg7.avif';
-
-import Showcase2 from '../images/showcase2.avif';
-import Showcase4 from '../images/showcaseimg6.jpg';
-import Showcase5 from '../images/showcase5.jpeg';
 import Homeimg8 from '../images/Homeimg8.avif';
 import { Button } from "@mui/material";
 import Navbar from '../components/Navbar';

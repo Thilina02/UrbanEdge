@@ -283,7 +283,7 @@ const handlePhotoUpload = () => {
                     style={{ display: 'none' }}
                     id="photo-upload"
                     type="file"
-                    accept="image/*"
+                    accept=".pdf,.doc,.docx"
                     multiple
                     onChange={handlePhotoUpload}
                   />

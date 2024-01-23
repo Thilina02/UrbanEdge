@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
           <SignUpIcon style={iconStyle} /> Register
         </Button>
         <Button color="inherit" component={RouterLink} to="/Your-Adds">
-        <img src={add} alt="email" style={{ width: '20px', marginRight: '8px' }} /> Your adds
+        <img src={add} alt="email" style={{ width: '20px', marginRight: '8px' }} /> My profile
         </Button>
 
         </div>
