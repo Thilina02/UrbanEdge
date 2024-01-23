@@ -32,6 +32,10 @@ const ListingRoutes = require('./routes/ListingRoutes')
 // Use the listingRoutes for routes related to listings
 app.use('/listings', ListingRoutes);
 
+const UserRoute = require('./routes/UserRoutes')
+// Use the listingRoutes for routes related to listings
+app.use('/users', UserRoute);
+
 
 const RentingRoute = require('./routes/RentPropertyRoute')
 // Use the listingRoutes for routes related to listings
