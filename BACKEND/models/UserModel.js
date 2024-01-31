@@ -6,7 +6,10 @@ const UserProfileSchema = new mongoose.Schema({
     Email: String,
     Mnumber: String,
     password: String,
-    Checkbox: Boolean,
+    Checkbox: {
+        type: Boolean,
+        default: true // or true, depending on your requirements
+      },
 })
 const UserProfile = mongoose.model('UserProfiles',UserProfileSchema);
 
