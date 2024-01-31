@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -44,31 +43,7 @@ export default function Register() {
   const [policy, setPolicy] = useState<boolean>(false);
   const [successmessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-
-    switch (name) {
-      case 'firstName':
-        setFname(value);
-        break;
-      case 'lastName':
-        setLname(value);
-        break;
-      case 'email':
-        setEmail(value);
-        break;
-      case 'phone':
-        setMnumber(value);
-        break;
-      // Add cases for other input fields if needed
-      case 'password':
-        setPassword(value);
-        break;
-
-      default:
-        break;
-    }
-  };
+  
   {/* 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -81,32 +56,34 @@ export default function Register() {
 
     const navigate = useNavigate();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    try {
-      const response = await axios.post('http://localhost:8070/users/registerUser', {
-        Fname,
-        Lname,
-        Email,
-        Mnumber,
-        password,
-        Checkbox,
-      });
-
-      console.log(response.status);
-      if(response.status === 200){
-        setSuccessMessage('Your post submitted successfully')
-        setErrorMessage('');
-        navigate({ ///${response.data._id}
-          pathname: `/Listing-success`,
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+    
+      try {
+        const response = await axios.post('http://localhost:8070/users/CreateUser', {
+          Fname,
+          Lname,
+          Email,
+          Mnumber,
+          password,
+          Checkbox,
         });
+    
+       
+        console.log(response.data); // Log response data
+    
+        if (response.status === 200) {
+          setSuccessMessage('Your post submitted successfully');
+          setErrorMessage('');
+          navigate({
+            pathname: `/Login`,
+          });
+        }
+      } catch (err) {
+        console.error('Error:', err);
+        setErrorMessage('An error occurred while submitting the form. Please try again.'); // Set error message
       }
-    } catch(error){
-      console.error('Error:', error);
-      // Handle errors here
-    }
-  };
+    };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -127,8 +104,8 @@ export default function Register() {
           <Typography component="h1" variant="h5">
             Register
           </Typography >
-          <form onSubmit={handleSubmit}>
-          <Box component="form" noValidate  sx={{ mt: 3 }}>
+         
+          <Box onSubmit={handleSubmit} component="form" noValidate  sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -140,7 +117,7 @@ export default function Register() {
                   label="First Name"
                   autoFocus
                   value={Fname}
-                 onChange={handleInputChange}
+                  onChange={(e) => setFname(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -152,7 +129,7 @@ export default function Register() {
                   name="lastName"
                   autoComplete="family-name"
                   value={Lname}
-                  onChange={handleInputChange}
+                  onChange={(e) => setLname(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -164,7 +141,7 @@ export default function Register() {
                   name="email"
                   autoComplete="email"
                   value={Email}
-                  onChange={handleInputChange}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -175,7 +152,7 @@ export default function Register() {
                   label="Mobile number"
                   name="phone"
                   value={Mnumber}
-                  onChange={handleInputChange}
+                  onChange={(e) => setMnumber(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -188,17 +165,17 @@ export default function Register() {
                   id="password"
                   autoComplete="new-password"
                   value={password}
-                  onChange={handleInputChange}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
               <FormControlLabel
                 control={
                   <Checkbox
-                    name="subscribe"
+                    name="policy"
                     color="primary"
-                    checked={policy}
-                    onChange={handleInputChange}
+                    checked={policy || false} // Use the policy state variable as the checked prop
+                    onChange={() => setPolicy((prevValue) => !prevValue)} // Handle the onChange event to update the policy state variable
                   />
                 }
                 label="I want to receive inspiration, marketing promotions and updates via email."
@@ -221,7 +198,7 @@ export default function Register() {
               </Grid>
             </Grid>
           </Box>
-          </form>
+       
         </Box>
 
          

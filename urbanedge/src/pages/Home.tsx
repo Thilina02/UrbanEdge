@@ -122,9 +122,9 @@ const CheckHome = () => {
    
     <div className='PropertyListing' >
       <div className='propListing-container'>
-      <Grid container xs={7.6}  style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', marginTop:'70px'  }}>
-      <Grid xs={9}>
-      <Typography variant='h4' style={{ fontWeight:"bold", fontSize:"40px", textAlign: 'center'}}>List your property with us</Typography>
+      <Grid container xs={9.2} sm={9.5} style={{display:'flex',justifyContent:'center', alignItems:'center'}} >
+      <Grid xs={8}>
+      <Typography variant='h4' style={{ fontWeight:"bold", fontSize:"40px"}}>List your property with us</Typography>
         <Typography variant='h6' style={{ fontWeight:"bold" }}>Sri Lanka's Best And Largest Real State Portfolio</Typography>
         <Button variant='contained'
         style={{marginTop: '1rem'}}
@@ -139,7 +139,7 @@ const CheckHome = () => {
       
     </div>
 
-    <Grid container xs={9.2} style={{margin:"30px"}}>
+    <Grid container xs={9.2} sm={9} style={{margin:"30px"}}>
       <Grid xs={12}>
       <Typography variant='h4' style={{fontWeight:"bold"}}>Our services</Typography>
       <Typography variant='body1' >
