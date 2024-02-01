@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,38 +12,58 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link as RouterLink } from 'react-router-dom'; // If you're using React Router
-import SigninImg from '../images/SignIn.avif'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'; // If you're using React Router
+import SigninImg from '../images/SignIn.avif';
 import Navbar from '../components/Navbar';
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import axios from 'axios';
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
+function Login() {
+  const navigate = useNavigate(); // Hook for navigating to other pages
+  const [data, setData] = React.useState({
+    email: '',
+    password: '',
+  });
 
-export default function Login() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const loginUser = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const { email, password } = data;
+
+    try {
+      const { data: response } = await axios.post('/login', {
+        email,
+        password,
+      });
+
+      if (response.error) {
+        alert(response.error);
+      } else {
+        setData({ email: '', password: '' });
+        if (response.user) {
+          // User found in the database, navigate to the home page
+          navigate('/home');
+        } else {
+          // User not found in the database, display an alert
+          alert('User not found. Please check your email and password.');
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while logging in. Please try again.');
+    }
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-            <Navbar/>
+    <ThemeProvider theme={createTheme()}>
+      <Navbar />
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -76,7 +96,7 @@ export default function Login() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={loginUser} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -86,6 +106,8 @@ export default function Login() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value={data.email}
+                onChange={handleChange}
               />
               <TextField
                 margin="normal"
@@ -96,6 +118,8 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={data.password}
+                onChange={handleChange}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -116,12 +140,11 @@ export default function Login() {
                   </Link>
                 </Grid>
                 <Grid item>
-                <Link component={RouterLink} to="/SignUp" variant="body2">
-      Don't have an account? Sign up
-    </Link>
+                  <Link component={RouterLink} to="/register" variant="body2">
+                    Don't have an account? Sign up
+                  </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
         </Grid>
@@ -129,3 +152,5 @@ export default function Login() {
     </ThemeProvider>
   );
 }
+
+export default Login;

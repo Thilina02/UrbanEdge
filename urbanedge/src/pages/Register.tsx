@@ -58,6 +58,22 @@ export default function Register() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
+
+      if(!Fname){
+        alert('First name is required!')
+      }
+      if(!Lname){
+        alert('Last name is required!')
+      }
+      if(!Email){
+        alert('Email is required!')
+      }
+      if(!Mnumber || Mnumber.length == 10){
+        alert('Mobile mumber should contain 10 digits')
+      }
+      if(!password || password.length < 8){
+        alert('Password should contain less than 8 characters')
+      }
     
       try {
         const response = await axios.post('http://localhost:8070/users/CreateUser', {
@@ -192,7 +208,7 @@ export default function Register() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-              <Link component={RouterLink} to="/SignIn" variant="body2">
+              <Link component={RouterLink} to="/Login" variant="body2">
               Already have an account? Sign in
             </Link>
               </Grid>
