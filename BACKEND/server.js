@@ -24,8 +24,10 @@ dotenv.config();
 
 const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL, {
-    
+mongoose.connect(URL, {});
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log('Mongoose Connection Success!!');
 });
 
 const ListingRoutes = require('./routes/ListingRoutes')
@@ -34,17 +36,18 @@ app.use('/listings', ListingRoutes);
 
 const UserRoute = require('./routes/UserRoutes')
 // Use the listingRoutes for routes related to listings
-app.use('/', UserRoute);
+app.use('/users', UserRoute);
+
+// Define login route
+const { loginUser } = require('./controller/UserController');
 
 
 const RentingRoute = require('./routes/RentPropertyRoute')
 // Use the listingRoutes for routes related to listings
 app.use('/RentProperties', RentingRoute);
 
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log('Mongoose Connection Success!!');
-});
+// Routes
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port number: ${PORT}`);

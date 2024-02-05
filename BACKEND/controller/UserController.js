@@ -71,9 +71,9 @@ const loginUser = async (req, res) => {
         }
 
         // Sign a JWT token
-        jwt.sign({ email: user.Email, id: user._id, name: user.name, userType }, process.env.JWT_SECRET, {}, (err, token) => {
+        jwt.sign({ Email: user.Email, id: user._id, Email: user.Email, userType }, process.env.JWT_SECRET || 'fallback_secret', {}, (err, token) => {
             if (err) throw err;
-            res.cookie('token', token).json({ success: true, token, userType }); // Include token and userType in the response
+            res.cookie('token', token).json({ success: true, token, userType });
         });
     } catch (error) {
         console.error(error);
