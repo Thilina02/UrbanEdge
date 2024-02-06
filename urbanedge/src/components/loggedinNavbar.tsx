@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Menu, MenuItem } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom'; // If you're using React Router
+import { Link as RouterLink,useParams  } from 'react-router-dom'; // If you're using React Router
 import add from '../images/add.png'
 import email from '../images/message.gif'
 import phone from '../images/phone.gif'
@@ -17,8 +17,10 @@ interface NavbarProps {
 }
 
 
-const Navbar: React.FC = () => {
+const Loggedin: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const { id } = useParams<{ id: string }>(); // Extract ID from URL params
+
   const userSignedIn = true; 
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -89,13 +91,14 @@ const Navbar: React.FC = () => {
         )}
 
         {/* Additional buttons, such as login or sign up */}
-        <Button color="inherit" component={RouterLink} to="/Login">
-          <SignInIcon style={iconStyle} /> Login
+        <Button color="inherit" component={RouterLink} to="/Your-Adds">
+        <img src={add} alt="email" style={{ width: '20px', marginRight: '8px' }} /> My Adds
         </Button>
-        <Button color="inherit" component={RouterLink} to="/Register">
-          <SignUpIcon style={iconStyle} /> Register
-        </Button>
-        
+
+        <Button color="inherit" component={RouterLink} to={`/Profile/${id}`}>
+  <SignInIcon style={iconStyle} /> Profile
+</Button>
+
 
         </div>
        </Toolbar>
@@ -103,4 +106,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default Loggedin;

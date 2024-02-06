@@ -39,6 +39,7 @@ export default function Register() {
   const [Lname, setLname] = useState('');
   const [Email, setEmail] = useState('');
   const [Mnumber, setMnumber] = useState('');
+  const [address, setAdress] = useState('');
   const [password, setPassword] = useState('');
   const [policy, setPolicy] = useState<boolean>(false);
   const [successmessage, setSuccessMessage] = useState('');
@@ -74,6 +75,9 @@ export default function Register() {
       if(!password || password.length < 8){
         alert('Password should contain less than 8 characters')
       }
+      if(!address ){
+        alert('Address is required!')
+      }
     
       try {
         const response = await axios.post('http://localhost:8070/users/CreateUser', {
@@ -82,6 +86,7 @@ export default function Register() {
           Email,
           Mnumber,
           password,
+          address,
           Checkbox,
         });
     
@@ -169,6 +174,17 @@ export default function Register() {
                   name="phone"
                   value={Mnumber}
                   onChange={(e) => setMnumber(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="Address"
+                  label="Address"
+                  name="adress"
+                  value={address}
+                  onChange={(e) => setAdress(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>

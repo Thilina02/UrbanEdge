@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createContext, useState, ReactNode, useContext, Dispatch, SetStateAction } from 'react';
+import { createContext, useState, ReactNode, useContext, Dispatch, SetStateAction,useEffect } from 'react';
 
 interface UserContextProviderProps {
   children: ReactNode;
@@ -10,6 +10,7 @@ interface User {
   // Example: id, username, email, etc.
   id: string;
   username: string;
+  Fname: string;
 }
 
 interface UserContextValue {
@@ -23,6 +24,9 @@ export const UserContext = createContext({} as UserContextValue);
 
 export function UserContextProvider({ children }: UserContextProviderProps) {
   const [user, setUser] = useState<User | null>(null);
+  
+
+ 
 
   const login = async (username: string, password: string) => {
     try {

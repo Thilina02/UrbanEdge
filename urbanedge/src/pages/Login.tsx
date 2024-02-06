@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState, useContext } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,36 +15,43 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink, useNavigate } from 'react-router-dom'; // If you're using React Router
 import SigninImg from '../images/SignIn.avif';
 import Navbar from '../components/Navbar';
+import { UserContext } from '../contex/userContex';
+
 import axios from 'axios';
 
 function Login() {
   const navigate = useNavigate(); // Hook for navigating to other pages
-  const [data, setData] = React.useState({
-    email: '',
+  const { setUser } = useContext(UserContext);
+  const [data, setData] = useState({
+    Email: '',
     password: '',
   });
 
   const loginUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const { email, password } = data;
-
+    
+    const { Email, password } = data;
+  
     try {
-      const { data: response } = await axios.post('/login', {
-        email,
+      const response = await axios.post('http://localhost:8070/users/login', {
+        Email,
         password,
       });
-
-      if (response.error) {
-        alert(response.error);
+  
+      if (response.data.error) {
+        // If the server returns an error message
+        alert(response.data.error);
       } else {
-        setData({ email: '', password: '' });
-        if (response.user) {
-          // User found in the database, navigate to the home page
-          navigate('/home');
+        const { success, user } = response.data; // Assuming the response contains a 'success' field indicating authentication success and a 'user' field containing user data
+        
+        if (success) {
+          // Authentication successful
+          alert('Login successful');
+          setUser(user);
+          navigate('/'); // Redirect to the home page or another route upon successful login
         } else {
-          // User not found in the database, display an alert
-          alert('User not found. Please check your email and password.');
+          // Authentication failed
+          alert('Invalid email or password. Please try again.');
         }
       }
     } catch (error) {
@@ -52,13 +59,22 @@ function Login() {
       alert('An error occurred while logging in. Please try again.');
     }
   };
+  
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {    const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const hashPassword = async (password : string) => {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashedPassword = hashArray.map((byte) => byte.toString(16).padStart(2, '0')).join('');
+    return hashedPassword;
   };
 
   return (
@@ -101,13 +117,13 @@ function Login() {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="Email"
                 label="Email Address"
-                name="email"
-                autoComplete="email"
+                name="Email"
+                autoComplete="Email"
                 autoFocus
-                value={data.email}
-                onChange={handleChange}
+                value={data.Email}
+                onChange={(e) => setData({ ...data, Email: e.target.value })}
               />
               <TextField
                 margin="normal"
@@ -119,7 +135,7 @@ function Login() {
                 id="password"
                 autoComplete="current-password"
                 value={data.password}
-                onChange={handleChange}
+                onChange={(e) => setData({ ...data, password: e.target.value })}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
