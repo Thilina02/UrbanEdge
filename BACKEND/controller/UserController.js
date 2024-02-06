@@ -4,7 +4,7 @@ const {comparePassword} =require('../userEncrypt')
 const jwt = require('jsonwebtoken'); 
 const CreateUser = async (req, res) => {
     try {
-        const { Fname, Lname, Email, Mnumber, password, Checkbox } = req.body;
+        const { Fname, Lname, Email, Mnumber,address,password, Checkbox } = req.body;
 
         if(!Fname){
             return res.status(400).json({success: false, message: 'First name is required!'})
@@ -34,6 +34,7 @@ const CreateUser = async (req, res) => {
             Lname,
             Email,
             Mnumber,
+            address,
             password: hashedPassword,
             Checkbox: validCheckbox // Assign validCheckbox value to Checkbox field
         });
@@ -80,8 +81,30 @@ const loginUser = async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error' });
     }
 };
-
+// Controller function to fetch a user profile by ID
+const getUserProfileById = async (req, res) => {
+    try {
+      // Extract the ID from the request parameters
+      const { id } = req.params;
+  
+      // Fetch the user profile by ID from the database
+      const userProfile = await UserProfile.findById(id);
+  
+      // Check if the user profile exists
+      if (!userProfile) {
+        return res.status(404).json({ message: 'User profile not found' });
+      }
+  
+      // Return the user profile if found
+      res.json(userProfile);
+    } catch (error) {
+      // Handle errors
+      console.error('Error fetching user profile by ID:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  };
 module.exports = {
     CreateUser,
     loginUser,
+    getUserProfileById,
 };
