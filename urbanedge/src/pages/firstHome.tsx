@@ -15,7 +15,7 @@ import Showcase4 from '../images/showcaseimg6.jpg';
 import Showcase5 from '../images/showcase5.jpeg';
 import Homeimg8 from '../images/Homeimg8.avif';
 import { Stack,  Button } from "@mui/material";
-import Navbar from '../components/Navbar';
+import Navbar from '../Navbars/Navbar';
 import './Home.css';
 
 

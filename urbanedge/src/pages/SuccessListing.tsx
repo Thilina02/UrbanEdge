@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, Typography, Button } from '@mui/material';
 import './SuccessListing.css'
-import Navbar from '../components/Navbar';
+import Navbar from '../Navbars/Navbar';
 import { Link as RouterLink } from 'react-router-dom';
-import Footer from '../components/Footer';
+import Footer from '../Navbars/Footer';
 function SuccessListing() {
   return (
     <div>

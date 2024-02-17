@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink, useNavigate } from 'react-router-dom'; // If you're using React Router
 import SigninImg from '../images/SignIn.avif';
-import Navbar from '../components/Navbar';
+import Navbar from '../Navbars/Navbar';
 import { UserContext } from '../contex/userContex';
 
 import axios from 'axios';
@@ -48,7 +48,7 @@ function Login() {
           // Authentication successful
           alert('Login successful');
           setUser(user);
-          navigate('/'); // Redirect to the home page or another route upon successful login
+          navigate('/Dashboard'); // Redirect to the home page or another route upon successful login
         } else {
           // Authentication failed
           alert('Invalid email or password. Please try again.');

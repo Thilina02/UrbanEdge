@@ -8,9 +8,9 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
 import Box from '@mui/material/Box';
-import Navbar from '../components/Navbar';
+import Navbar from '../Navbars/Navbar';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer';
+import Footer from '../Navbars/Footer';
 import axios from 'axios';
 
 

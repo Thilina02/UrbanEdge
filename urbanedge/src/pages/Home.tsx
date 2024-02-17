@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import { Paper, Typography } from '@mui/material';
 import { Card,CardMedia,CardContent,CardActions } from '@mui/material';
-import Footer from '../components/Footer';
+import Footer from '../Navbars/Footer';
 import Homeimg11 from '../images/Homeimg1.avif';
 import Homeimg2 from '../images/Homeimg2.avif';
 import Homeimg3 from '../images/Homeimg3.avif';
@@ -12,7 +12,7 @@ import Homeimg6 from '../images/Homeimg6.avif';
 import Homeimg7 from '../images/Homeimg7.avif';
 import Homeimg8 from '../images/Homeimg8.avif';
 import { Button } from "@mui/material";
-import Navbar from '../components/Navbar';
+import Navbar from '../Navbars/Navbar';
 import { Link as RouterLink } from 'react-router-dom';
 import './Home.css';
 

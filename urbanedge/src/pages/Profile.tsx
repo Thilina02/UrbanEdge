@@ -38,11 +38,9 @@ function Profile() {
     <div>
       <Card>
         <CardContent>
-          <Typography variant="h5">{userProfile.Fname} {userProfile.Lname}</Typography>
+          <Typography variant="h5"></Typography>
           <Typography>Last name: {userProfile.Mnumber}</Typography>
-          <Typography>Email: {userProfile.Email}</Typography>
-          <Typography>Mobile Number: {userProfile.Mnumber}</Typography>
-          <Typography>Address: {userProfile.address}</Typography>
+          
         </CardContent>
       </Card>
 
@@ -81,8 +79,11 @@ function Profile() {
   </svg>
 </div>
 
-        <div className="cardox__title">Cameron Williamson</div>
-        <div className="cardox__subtitle">Web Development</div>
+        <div className="cardox__title">{userProfile.Fname} {userProfile.Lname}</div>
+        <div className="cardox__subtitle">
+          <Typography>Email: {userProfile.Email}</Typography>
+          <Typography>Number: {userProfile.Mnumber}</Typography>
+          <Typography>Address: {userProfile.address}</Typography></div>
         <div className="cardox__wrapper">
           <button className="cardox__btn">Button</button>
           <button className="cardox__btn card__btn-solid">Button</button>

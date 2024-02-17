@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../Navbars/Navbar'
 import { Button, Grid, Typography } from '@mui/material'
 import Tvilla from '../images/Tvilla.avif'
 import './List-with-us.css'
@@ -12,7 +12,7 @@ import TretailSpace from '../images/Tretailspace.avif'
 import Tplantation from '../images/Tplantation&state.avif'
 import Tfactory from '../images/Tfactory.avif'
 import { Link as RouterLink } from 'react-router-dom';
-import Footer from '../components/Footer'
+import Footer from '../Navbars/Footer'
 export const ListwithUs= () => {
 
 

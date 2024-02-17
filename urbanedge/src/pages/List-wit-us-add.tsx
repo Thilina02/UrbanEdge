@@ -9,8 +9,8 @@ import TellUs from '../images/TellUs.avif'
 import { useNavigate } from 'react-router-dom';
 import { UserContext  } from '../contex/userContex';
 import ArrowRight from '@mui/icons-material/ArrowRight'; 
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Footer from '../Navbars/Footer';
+import Navbar from '../Navbars/Navbar';
  
 export const Listwitusform = () => {
   const [age, setAge] = React.useState<string | number>('');

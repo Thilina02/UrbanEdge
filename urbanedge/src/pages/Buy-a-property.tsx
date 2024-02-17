@@ -15,9 +15,9 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, Theme } from '@mui/system'; // Update the import statement
-import Footer from '../components/Footer';
+import Footer from '../Navbars/Footer';
 import Homeimg5 from '../images/Homeimg5.avif';
-import Navbar from '../components/Navbar';
+import Navbar from '../Navbars/Navbar';
 
 
 

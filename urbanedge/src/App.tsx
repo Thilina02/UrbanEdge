@@ -18,11 +18,11 @@ import Rentaproperty from './pages/Rent-a-property';
 import Imgetest from './pages/imgetest';
 import Apartmenttype from './pages/Apartment-type';
 import Uploadedadds from './pages/Uploaded-adds';
+// Import Dashboard component
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 // Import ThemeProvider and createTheme
 import { ThemeProvider } from '@mui/system';
-
 import { createTheme } from '@mui/material/styles';
 
 // Your custom theme
@@ -50,6 +50,7 @@ function App() {
             <Route path='/img' element={<Imgetest />} />
             <Route path='/Your-Adds' element={<Uploadedadds />} />
             <Route path='/Apartments' element={<Apartmenttype />} />
+            {/* Corrected route for Dashboard component */}
             <Route path='/Dashboard' element={<Dashboard />} />
             <Route path='/Profile/:id' element={<Profile />} />
           </Routes>
