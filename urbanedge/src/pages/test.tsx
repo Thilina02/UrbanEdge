@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import Divider from '@mui/material/Divider';
-import Chip from '@mui/material/Chip';
+import { Typography } from '@mui/material';
 
 const Root = styled('div')(({ theme }) => ({
   width: '100%',
@@ -11,64 +10,38 @@ const Root = styled('div')(({ theme }) => ({
   },
 }));
 
+function estimated(event: React.FormEvent<HTMLFormElement>) { // Explicitly defining the type for event parameter
+  event.preventDefault();
+  var state = document.getElementById('mycheck') as HTMLInputElement;
+
+  if(!state.checked){
+    window.alert("please press the button");
+
+    return;
+  }else{
+    alert("done and dusted");
+  }
+
+  // Your function logic here
+}
+
 export default function DividerText() {
   const content = (
     <div>
+       <input type='checkbox' id='mycheck'></input>
       {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
    Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
    Sed malesuada lobortis pretium.`}
+  
     </div>
   );
 
   return (
-    <div>
-
- 
     <Root>
-      {content}
-      <Divider>CENTER</Divider>
-      {content}
-      <Divider textAlign="left">LEFT</Divider>
-      {content}
-      <Divider textAlign="right">RIGHT</Divider>
-      {content}
-      <Divider>
-        <Chip label="CHIP" />
-      </Divider>
-      {content}
-
-
-
+      <form onSubmit={estimated}> {/* Use the estimated function as the onSubmit handler */}
+        {content}
+        <button type="submit">Submit</button> {/* Button to submit the form */}
+      </form>
     </Root>
-
-
-<div className='whyUrban-container' style={{display:"flex", justifyContent:"space-between"}}>
-      <div className='whyUrbanEdge'>
-        <Root>
-        hello this is first one ewrfwefw werfrw fwe fwewef fw efef wefw wef wfwef
-        <Divider>Left</Divider>
-        hello this is first one fwef wefw wef wfw wef 
-        <Divider>Right</Divider>
-        hello this is first one
-        <Divider>Center</Divider>
-        </Root>
-      </div> <br/>
-
-      <div className='vertical-line'></div>
-
-      <div className='whyUrban2'>
-        <Root>
-        hello this is first one ewrfwefw werfrw fwe fwewef fw efef wefw wef wfwef
-        <Divider>Left</Divider>
-        hello this is first one fwef wefw wef wfw wef 
-        <Divider>Right</Divider>
-        hello this is first one
-        <Divider>Center</Divider>
-        </Root>
-      </div>
-
-      </div>
-      </div>
-      
   );
 }
